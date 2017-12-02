@@ -6,13 +6,13 @@ public class Tower : MonoBehaviour {
     [Header("Attributes")]
     public float range = 15f;
     public float fireRate = 1f;
-    private float fireCountdown = 0f;
+    private float _fireCountdown = 0f;
 
     public float turnSpeed = 10f;
     public string enemyTag = "Enemy";
     public Transform partToRotate;
 
-    private Transform target;
+    private Transform _target;
 
     public GameObject bulletPrefab;
     public Transform firePoint;
@@ -37,29 +37,29 @@ public class Tower : MonoBehaviour {
 
         if (nearestEnemy != null && shortestDistance <= range)
         {
-            target = nearestEnemy.transform;
+            _target = nearestEnemy.transform;
         }
         else {
-            target = null;
+            _target = null;
         }
     }
 	
 	// Update is called once per frame
 	void Update () {
-        if (target == null)
+        if (_target == null)
             return;
 
-        Vector3 direction = target.position - transform.position;
+        Vector3 direction = _target.position - transform.position;
         Quaternion lookRotation = Quaternion.LookRotation(direction);
         Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
         partToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
 
-        if (fireCountdown <= 0f) {
+        if (_fireCountdown <= 0f) {
             Shoot();
-            fireCountdown = 1f / fireRate;
+            _fireCountdown = 1f / fireRate;
         }
 
-        fireCountdown -= Time.deltaTime;
+        _fireCountdown -= Time.deltaTime;
     }
 
     void Shoot() {
@@ -67,7 +67,7 @@ public class Tower : MonoBehaviour {
         Bullet bullet = bulletGO.GetComponent<Bullet>();
 
         if (bullet != null) {
-            bullet.SetTarget(target);
+            bullet.SetTarget(_target);
         }
     }
 

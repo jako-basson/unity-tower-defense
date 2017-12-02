@@ -11,25 +11,25 @@ public class WaveSpawner : MonoBehaviour {
 
     public Text waveCountdownText;
 
-    private float countdown = 2f;
-    private int waveIndex = 0;
+    private float _countdown = 2f;
+    private int _waveIndex = 0;
 
     void Update()
     {
-        if (countdown <= 0f) {
+        if (_countdown <= 0f) {
             StartCoroutine(SpawnWave());
-            countdown = timeBetweenWaves;
+            _countdown = timeBetweenWaves;
         }
 
-        countdown -= Time.deltaTime;
+        _countdown -= Time.deltaTime;
 
-        waveCountdownText.text = Mathf.Round(countdown).ToString();
+        waveCountdownText.text = Mathf.Round(_countdown).ToString();
     }
 
     IEnumerator SpawnWave() {
-        waveIndex++;
+        _waveIndex++;
 
-        for (int i = 0; i < waveIndex; i++)
+        for (int i = 0; i < _waveIndex; i++)
         {
             SpawnEnemy();
             yield return new WaitForSeconds(0.5f);

@@ -2,7 +2,7 @@
 
 public class CameraController : MonoBehaviour
 {
-    private bool canMoveCamera = true;
+    private bool _canMoveCamera = true;
 
     public float panSpeed = 30f;
     public float panBorderThickness = 10f;
@@ -17,10 +17,10 @@ public class CameraController : MonoBehaviour
         // for testing only, stop camera movement
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            canMoveCamera = !canMoveCamera;
+            _canMoveCamera = !_canMoveCamera;
         }
 
-        if (!canMoveCamera)
+        if (!_canMoveCamera)
         {
             return;
         }
