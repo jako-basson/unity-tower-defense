@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class Turret : MonoBehaviour {
+public class Tower : MonoBehaviour {
 
     [Header("Attributes")]
     public float range = 15f;
