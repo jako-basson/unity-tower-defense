@@ -1,6 +1,8 @@
 # unity-tower-defense
 Building a tower defense game while learning Unity, using Brackeys tutorial as the core of the game.
 
+WARNING - Abandoned for the time being, I might pick this up at a later stage.
+
 Channel:
 https://www.youtube.com/brackeys
 
